@@ -1,0 +1,108 @@
+/* Animations */
+@keyframes sjSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes sjFadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+/* Ensure base container inherits clean fonts */
+#sj-chat-container, .sj-floating-prompt, #sj-powerup-btn {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Main Draggable Button */
+#sj-powerup-btn {
+    position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px;
+    background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    cursor: grab; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    z-index: 999999; user-select: none; transition: transform 0.2s, opacity 0.3s;
+}
+#sj-powerup-btn:hover { transform: scale(1.05); opacity: 1 !important; }
+#sj-powerup-btn:active { cursor: grabbing; transform: scale(0.95); }
+
+/* Draggable Floating Prompts */
+.sj-floating-prompt {
+    position: fixed; right: 30px;
+    background: white; color: #0f172a; border: 1px solid #e2e8f0;
+    border-radius: 20px; padding: 10px 18px; font-size: 13px; 
+    cursor: grab; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    z-index: 999998; font-weight: 600; white-space: nowrap; user-select: none;
+    animation: sjFadeIn 0.4s ease-out forwards; transition: opacity 0.3s;
+}
+.sj-floating-prompt:active { cursor: grabbing; }
+.sj-floating-prompt:hover { background: #f8fafc; border-color: #10b981; color: #10b981; opacity: 1 !important; }
+
+/* Pinned Prompt Style */
+.sj-pinned-prompt { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+
+/* Chat Container */
+#sj-chat-container {
+    position: fixed; bottom: 30px; right: 100px; width: 450px; height: 700px; max-height: 85vh;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2); z-index: 999999;
+    font-size: 14px; display: flex; flex-direction: column; overflow: hidden;
+    animation: sjSlideUp 0.3s ease-out;
+}
+
+/* Header */
+#sj-chat-header {
+    background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 16px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 10;
+}
+.sj-header-title { display: flex; align-items: center; gap: 8px; font-size: 16px; letter-spacing: 0.5px;}
+.sj-header-actions button {
+    background: rgba(255,255,255,0.2); border: none; color: white; cursor: pointer;
+    font-size: 14px; border-radius: 6px; width: 28px; height: 28px;
+    display: inline-flex; align-items: center; justify-content: center; margin-left: 6px; transition: 0.2s;
+}
+.sj-header-actions button:hover { background: rgba(255,255,255,0.4); }
+
+/* Messages Area */
+#sj-chat-messages {
+    flex-grow: 1; padding: 20px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 16px; background: #f8fafc;
+}
+#sj-chat-messages::-webkit-scrollbar { width: 6px; }
+#sj-chat-messages::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+.sj-msg {
+    max-width: 95%; padding: 12px 16px; border-radius: 16px; line-height: 1.6;
+    word-wrap: break-word; animation: sjFadeIn 0.3s ease; position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.sj-msg-content { font-family: 'Segoe UI', system-ui, sans-serif !important; font-size: 14px !important; color: inherit !important; }
+.sj-msg b { color: inherit; font-weight: 700; }
+.sj-msg-user { background: #10b981; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+.sj-msg-model {
+    background: white; color: #334155; align-self: flex-start;
+    border-bottom-left-radius: 4px; border: 1px solid #e2e8f0;
+    padding-right: 35px; width: 100%; box-sizing: border-box;
+}
+
+/* Copy Button */
+.sj-copy-btn {
+    position: absolute; top: 10px; right: 10px; font-size: 16px; cursor: pointer;
+    opacity: 0.3; transition: opacity 0.2s; user-select: none;
+}
+.sj-msg-model:hover .sj-copy-btn { opacity: 1; }
+.sj-copy-btn:hover { transform: scale(1.1); }
+
+/* Thinking Pulse */
+.sj-pulse { animation: pulse 1.5s infinite ease-in-out; color: #94a3b8; background: transparent; box-shadow: none; border:none; padding:0;}
+@keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+/* Input Area */
+#sj-chat-input-area {
+    display: flex; padding: 15px; background: white; border-top: 1px solid #e2e8f0;
+    align-items: center; gap: 10px;
+}
+#sj-chat-input {
+    flex-grow: 1; border: 1px solid #cbd5e1; border-radius: 24px;
+    padding: 12px 18px; outline: none; font-size: 14px; background: #f1f5f9;
+}
+#sj-chat-input:focus { background: white; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.1); }
+#sj-chat-send {
+    background: #10b981; color: white; border: none; border-radius: 50%;
+    width: 42px; height: 42px; cursor: pointer; flex-shrink: 0;
+    display: flex; justify-content: center; align-items: center; transition: 0.2s;
+}
+#sj-chat-send:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(16,185,129,0.3); }

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "SJ Power UP Tool",
+  "version": "12.0",
+  "description": "Enterprise AI Assistant. Dual-Mode Routing, Google Search failover, Link Extraction, and fully customizable floating UI.",
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
