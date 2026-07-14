@@ -1,0 +1,145 @@
+{
+  "name": "AI-Extension-v2.0.0",
+  "version": "2.0.0",
+  "description": "Power Up AI Extension using NVIDIA API with enhanced UI, performance, and features",
+  "release_date": "2026-07-14",
+  "files": [
+    {
+      "name": "manifest.json",
+      "size_kb": 1,
+      "purpose": "Extension configuration and permissions"
+    },
+    {
+      "name": "background.js",
+      "size_kb": 10,
+      "purpose": "Service worker with API routing, caching, retry logic, request queue"
+    },
+    {
+      "name": "content.js",
+      "size_kb": 15,
+      "purpose": "Content script with UI injection, dark mode, search, persistent history"
+    },
+    {
+      "name": "popup.js",
+      "size_kb": 8,
+      "purpose": "Popup settings management with validation"
+    },
+    {
+      "name": "popup.html",
+      "size_kb": 6,
+      "purpose": "Settings UI markup"
+    },
+    {
+      "name": "style.css",
+      "size_kb": 8,
+      "purpose": "All styling including dark mode and animations"
+    },
+    {
+      "name": "modules/analytics.js",
+      "size_kb": 3,
+      "purpose": "Usage tracking and conversation templates"
+    },
+    {
+      "name": "modules/settings.js",
+      "size_kb": 2,
+      "purpose": "Advanced settings validation and management"
+    },
+    {
+      "name": "modules/providers.js",
+      "size_kb": 2,
+      "purpose": "AI provider configuration and management"
+    },
+    {
+      "name": "modules/messageProcessor.js",
+      "size_kb": 2,
+      "purpose": "Message filtering, categorization, and processing"
+    },
+    {
+      "name": "modules/commands.js",
+      "size_kb": 2,
+      "purpose": "Keyboard shortcuts and command palette"
+    },
+    {
+      "name": "docs/FEATURES.md",
+      "size_kb": 10,
+      "purpose": "Detailed feature documentation"
+    },
+    {
+      "name": "docs/CHANGELOG.md",
+      "size_kb": 5,
+      "purpose": "Version history and migration guide"
+    },
+    {
+      "name": "docs/ENHANCEMENT_PR.md",
+      "size_kb": 12,
+      "purpose": "PR description with technical details"
+    },
+    {
+      "name": "docs/README.md",
+      "size_kb": 8,
+      "purpose": "Quick start and overview"
+    },
+    {
+      "name": "docs/MANIFEST.json",
+      "size_kb": 2,
+      "purpose": "File manifest with descriptions"
+    }
+  ],
+  "total_size_kb": 96,
+  "features": {
+    "ui_ux": [
+      "Dark mode support",
+      "Advanced markdown parser",
+      "Message search and filtering",
+      "Persistent chat history",
+      "Multiple export formats",
+      "6 keyboard shortcuts"
+    ],
+    "performance": [
+      "Request queue management",
+      "Retry logic with backoff",
+      "Response caching",
+      "Rate limiting",
+      "Enhanced error handling"
+    ],
+    "features": [
+      "5 AI providers",
+      "Conversation templates",
+      "Command palette",
+      "Analytics tracking",
+      "Prompt editing",
+      "Provider management",
+      "Message categorization",
+      "Advanced settings"
+    ]
+  },
+  "keyboard_shortcuts": {
+    "Alt+Space": "Toggle chat window",
+    "Ctrl+K": "Open command palette",
+    "Ctrl+/": "Toggle message search",
+    "Ctrl+Shift+E": "Export as JSON",
+    "Ctrl+Shift+D": "Toggle dark mode",
+    "Ctrl+L": "Clear chat history"
+  },
+  "supported_providers": [
+    "NVIDIA NIM",
+    "OpenAI GPT-4o",
+    "Google Gemini",
+    "Groq Llama",
+    "Anthropic Claude"
+  ],
+  "system_requirements": {
+    "chrome_version_min": 90,
+    "storage_required_mb": 50,
+    "internet_connection": "Required"
+  },
+  "changes_from_v1": [
+    "Complete UI overhaul with dark mode",
+    "Advanced performance optimizations",
+    "Expanded feature set",
+    "New modular architecture",
+    "Enhanced error handling",
+    "Improved security",
+    "Better documentation"
+  ]
+}

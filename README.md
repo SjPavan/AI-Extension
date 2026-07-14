@@ -1,39 +1,188 @@
-# AI-Extension
+# AI-Extension Enhanced v2.0.0
 
-Power Up AI Extension using NVIDIA API
+## 📦 Project Structure
 
-AI-Extension is a browser extension that leverages local JavaScript and the NVIDIA API to accelerate AI-powered features in the browser. It includes a popup UI, content scripts that interact with web pages, and a background service to manage long-running tasks and API integration.
+```
+AI-Extension/
+├── manifest.json              # Extension configuration
+├── background.js              # Service worker with caching & retry logic
+├── content.js                 # Content script with UI & dark mode
+├── popup.js                   # Settings management
+├── popup.html                 # Settings UI
+├── style.css                  # Comprehensive styling
+├── modules/
+│   ├── analytics.js           # Usage tracking & templates
+│   ├── settings.js            # Settings manager
+│   ├── providers.js           # AI provider config
+│   ├── messageProcessor.js    # Message filtering
+│   └── commands.js            # Keyboard shortcuts
+├── docs/
+│   ├── ENHANCEMENT_PR.md      # PR description
+│   ├── FEATURES.md            # Feature documentation
+│   ├── CHANGELOG.md           # Version history
+│   └── README.md              # This file
+└── .github/
+    └── workflows/             # CI/CD configurations
+```
 
-## Contents
+## 🚀 Quick Start
 
-- manifest.json — Extension manifest (permissions, scripts, metadata).
-- background.js — Background service worker: coordinates API calls, manages state, and handles messaging between popup and content scripts.
-- content.js — Content script injected into web pages: collects page context, injects UI elements, and communicates with the background script.
-- popup.html — Popup user interface markup.
-- popup.js — Popup logic: UI interactions, settings, and commands to invoke extension features.
-- style.css — Styles for the popup and any injected UI components.
-- SJ Power UP Tool Version 12.0.zip — Optional packaged assets or installer included by the author.
+### Installation
+1. Extract the ZIP file
+2. Go to `chrome://extensions`
+3. Enable "Developer Mode" (top-right)
+4. Click "Load unpacked"
+5. Select the extracted folder
 
-## Features
+### First Run
+1. Click the extension icon
+2. Go to **Settings & API**
+3. Choose your AI provider
+4. Paste your API key
+5. Click "Save Configuration"
+6. Navigate to any webpage and click the floating button
 
-- Integrates with NVIDIA APIs to accelerate AI/ML operations from the browser.
-- Popup UI for quick controls and settings.
-- Content script support for page-aware features (text extraction, context-aware suggestions, UI injection).
-- Background worker to handle network requests and long-running tasks reliably.
+## ✨ Key Features
 
-## Installation (for development)
+### 🎨 UI/UX
+- **Dark Mode** - Toggle with `Ctrl+Shift+D`
+- **Message Search** - Find past messages with `Ctrl+/`
+- **Export Options** - JSON or CSV format
+- **Persistent History** - Auto-save and restore
+- **Keyboard Shortcuts** - 6 built-in shortcuts
 
-1. Clone the repository or download the ZIP.
-2. Open your browser's Extensions/Add-ons page and enable Developer Mode.
-3. Click "Load unpacked" and select the repository folder.
-4. The extension should appear in your toolbar; open the popup to configure settings.
+### ⚡ Performance
+- **Request Queue** - Manages concurrent requests
+- **Retry Logic** - Auto-retry with backoff
+- **Response Caching** - 1-hour cache
+- **Rate Limiting** - 10 req/minute
+- **Error Handling** - Comprehensive error management
 
-Note: This project may require local NVIDIA API credentials or additional setup to use GPU-accelerated features. Follow any README or notes inside the ZIP for vendor-specific configuration.
+### 🚀 Features
+- **5 AI Providers** - NVIDIA, OpenAI, Gemini, Groq, Anthropic
+- **Conversation Templates** - 5 pre-built templates
+- **Command Palette** - Quick access (Ctrl+K)
+- **Analytics** - Track usage metrics
+- **Prompt Editing** - Manage custom prompts
 
-## Contributing
+## 🎮 Keyboard Shortcuts
 
-Contributions, bug reports, and improvements are welcome. Open an issue or submit a pull request.
+| Shortcut | Action |
+|----------|--------|
+| `Alt+Space` | Toggle chat |
+| `Ctrl+K` | Command palette |
+| `Ctrl+/` | Search messages |
+| `Ctrl+Shift+E` | Export JSON |
+| `Ctrl+Shift+D` | Dark mode |
+| `Ctrl+L` | Clear history |
 
-## License
+## 📋 Configuration
 
-Specify a license for this project (e.g., MIT) or add a LICENSE file to make the terms explicit.
+### Supported Providers
+- **NVIDIA NIM** - Fast & free, includes web search
+- **OpenAI** - Advanced reasoning
+- **Google Gemini** - Multimodal support
+- **Groq** - Lightning-fast
+- **Anthropic Claude** - Best reasoning
+
+### UI Settings
+- Button Size: 40-80px
+- Opacity: 10-100%
+- Position: Left/Right
+- Dark Mode: On/Off
+- Auto-Save: On/Off
+
+## 📊 File Sizes
+
+| File | Size | Purpose |
+|------|------|----------|
+| background.js | ~10 KB | Service worker |
+| content.js | ~15 KB | Content script |
+| popup.js | ~8 KB | Settings UI logic |
+| style.css | ~8 KB | All styling |
+| modules/ | ~12 KB | Advanced features |
+
+**Total: ~55 KB** (lightweight & fast)
+
+## 🔒 Security & Privacy
+
+- ✅ No external tracking
+- ✅ No telemetry
+- ✅ Local storage only
+- ✅ API keys never logged
+- ✅ Input sanitization
+- ✅ XSS prevention
+
+## 📚 Documentation
+
+- **FEATURES.md** - Detailed feature documentation
+- **CHANGELOG.md** - Version history
+- **ENHANCEMENT_PR.md** - Technical changes
+- **README.md** - This file
+
+## 🐛 Troubleshooting
+
+### Chat not responding
+1. Verify API key is correct
+2. Check internet connection
+3. Clear cache (Ctrl+L)
+4. Reload extension
+
+### Slow responses
+1. Try faster provider (Groq)
+2. Reduce message length
+3. Disable web search
+4. Check system resources
+
+### Settings not saving
+1. Check storage quota
+2. Clear browser cache
+3. Verify permissions
+4. Reinstall extension
+
+## 💡 Tips & Tricks
+
+### Maximize Efficiency
+1. Pin your favorite prompts
+2. Use conversation templates
+3. Enable auto-copy
+4. Save chat history as JSON
+5. Use keyboard shortcuts
+
+### Best Practices
+1. Keep messages under 500 chars
+2. Use templates for common tasks
+3. Enable dark mode for long sessions
+4. Export important conversations
+5. Clear history periodically
+
+## 🤝 Support & Contribution
+
+- **Issues**: GitHub Issues
+- **Discussions**: GitHub Discussions
+- **Contributing**: Fork → Branch → PR
+- **Feedback**: Open an issue
+
+## 📝 Version Info
+
+- **Version**: 2.0.0
+- **Release Date**: 2026-07-14
+- **Chrome Support**: 90+
+- **Status**: Production Ready
+
+## 📄 License
+
+MIT License - See LICENSE file for details
+
+## 🙏 Credits
+
+Developed with focus on:
+- User Experience
+- Performance & Reliability
+- Security & Privacy
+- Accessibility
+- Maintainability
+
+---
+
+**Happy coding! 🚀**
