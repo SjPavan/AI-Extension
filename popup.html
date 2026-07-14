@@ -2,36 +2,198 @@
 <html>
 <head>
     <style>
-        body { width: 350px; padding: 15px; font-family: 'Segoe UI', system-ui, sans-serif; color: #1e293b; background: #f8fafc;}
-        .header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 18px; font-weight: 700; color: #10b981; }
-        .card { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 15px; border: 1px solid #e2e8f0; }
-        select, input[type="password"], input[type="text"], textarea, input[type="range"] { width: 100%; padding: 10px 12px; margin: 8px 0; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 13px; background: #f8fafc; transition: all 0.2s;}
-        select:focus, input[type="password"]:focus, input[type="text"]:focus, textarea:focus { outline: none; border-color: #10b981; background: white; box-shadow: 0 0 0 3px rgba(16,185,129,0.15); }
-        button.primary { width: 100%; padding: 12px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s;}
-        button.primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16,185,129,0.3); }
-        h4 { margin: 0 0 5px 0; font-size: 15px; color: #0f172a;}
-        p.desc { font-size: 12px; color: #64748b; margin-top: 0; margin-bottom: 8px; line-height: 1.4;}
-        .prompt-item { display: flex; align-items: center; background: #f1f5f9; padding: 12px; margin-bottom: 8px; border-radius: 8px; font-size: 13px; border: 1px solid #e2e8f0; transition: background 0.2s;}
-        .prompt-item.pinned { background: #f0fdf4; border-color: #10b981; }
-        .prompt-title { flex-grow: 1; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #334155; margin: 0 10px;}
-        .icon-btn { background: none; border: none; cursor: pointer; font-size: 14px; opacity: 0.6; transition: 0.2s; padding: 4px; border-radius: 4px;}
-        .icon-btn:hover { opacity: 1; background: rgba(0,0,0,0.05); }
-        .icon-btn.active { opacity: 1; background: rgba(16,185,129,0.1); color: #10b981; }
+        * { box-sizing: border-box; }
+        body { 
+            width: 420px; 
+            padding: 15px; 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            color: #1e293b; 
+            background: #f8fafc;
+            margin: 0;
+        }
+        .header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 20px; 
+            font-size: 18px; 
+            font-weight: 700; 
+            color: #10b981; 
+        }
+        .card { 
+            background: white; 
+            padding: 18px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+            margin-bottom: 15px; 
+            border: 1px solid #e2e8f0; 
+        }
+        select, input[type="password"], input[type="text"], textarea, input[type="range"] { 
+            width: 100%; 
+            padding: 10px 12px; 
+            margin: 8px 0; 
+            box-sizing: border-box; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        select:focus, input[type="password"]:focus, input[type="text"]:focus, textarea:focus { 
+            outline: none; 
+            border-color: #10b981; 
+            background: white; 
+            box-shadow: 0 0 0 3px rgba(16,185,129,0.15); 
+        }
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 6px;
+        }
+        button.primary { 
+            width: 100%; 
+            padding: 12px; 
+            background: linear-gradient(135deg, #10b981, #059669); 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        button.primary:hover { 
+            transform: translateY(-1px); 
+            box-shadow: 0 4px 12px rgba(16,185,129,0.3); 
+        }
+        button.primary:active { 
+            transform: translateY(0); 
+        }
+        h4 { 
+            margin: 0 0 5px 0; 
+            font-size: 15px; 
+            color: #0f172a;
+        }
+        p.desc { 
+            font-size: 12px; 
+            color: #64748b; 
+            margin-top: 0; 
+            margin-bottom: 8px; 
+            line-height: 1.4;
+        }
+        .prompt-item { 
+            display: flex; 
+            align-items: center; 
+            background: #f1f5f9; 
+            padding: 12px; 
+            margin-bottom: 8px; 
+            border-radius: 8px; 
+            font-size: 13px; 
+            border: 1px solid #e2e8f0; 
+            transition: background 0.2s;
+        }
+        .prompt-item:hover {
+            background: #e2e8f0;
+        }
+        .prompt-item.pinned { 
+            background: #f0fdf4; 
+            border-color: #10b981; 
+        }
+        .prompt-title { 
+            flex-grow: 1; 
+            font-weight: 600; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            white-space: nowrap; 
+            color: #334155; 
+            margin: 0 10px;
+        }
+        .icon-btn { 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            font-size: 14px; 
+            opacity: 0.6; 
+            transition: 0.2s; 
+            padding: 4px; 
+            border-radius: 4px;
+        }
+        .icon-btn:hover { 
+            opacity: 1; 
+            background: rgba(0,0,0,0.05); 
+        }
+        .icon-btn.active { 
+            opacity: 1; 
+            background: rgba(16,185,129,0.1); 
+            color: #10b981; 
+        }
+        .edit-btn { color: #3b82f6; }
         .del-btn { color: #ef4444; }
-        .toggle-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; margin-bottom: 12px; cursor: pointer;}
-        
-        .ui-setting-group { margin-bottom: 15px; }
-        .ui-setting-label { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 4px; }
-        .radio-group { display: flex; gap: 10px; margin-bottom: 8px; }
-        .radio-group label { font-size: 13px; display: flex; align-items: center; gap: 4px; cursor: pointer;}
+        .toggle-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-size: 13px; 
+            font-weight: 600; 
+            margin-bottom: 12px; 
+            cursor: pointer;
+        }
+        .ui-setting-group { 
+            margin-bottom: 15px; 
+        }
+        .ui-setting-label { 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 12px; 
+            font-weight: 600; 
+            color: #475569; 
+            margin-bottom: 4px; 
+        }
+        .radio-group { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 8px; 
+        }
+        .radio-group label { 
+            font-size: 13px; 
+            display: flex; 
+            align-items: center; 
+            gap: 4px; 
+            cursor: pointer;
+        }
+        .sj-status {
+            font-size: 13px;
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .sj-status-success {
+            color: #10b981;
+            background: #f0fdf4;
+        }
+        .sj-status-error {
+            color: #ef4444;
+            background: #fef2f2;
+        }
+        hr { 
+            border: 0; 
+            height: 1px; 
+            background: #e2e8f0; 
+            margin: 15px 0; 
+        }
+        textarea {
+            resize: vertical;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        SJ Power UP
+        <span>SJ Power UP</span>
     </div>
 
+    <!-- Settings Card -->
     <div class="card">
         <h4>⚙️ Settings & API</h4>
         <select id="apiProvider">
@@ -46,7 +208,7 @@
             <input type="checkbox" id="autoCopyToggle"> Auto-Copy AI output to clipboard
         </label>
         
-        <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 15px 0;">
+        <hr>
         
         <h4>🎨 UI Customization</h4>
         
@@ -68,20 +230,34 @@
             </div>
         </div>
 
+        <div class="ui-setting-group">
+            <label class="toggle-container">
+                <input type="checkbox" id="autoSaveToggle" checked> Auto-save chat history
+            </label>
+        </div>
+
+        <div class="ui-setting-group">
+            <label class="toggle-container">
+                <input type="checkbox" id="darkModeToggle"> Dark mode
+            </label>
+        </div>
+
         <button id="saveBtn" class="primary">Save Configuration</button>
-        <p id="status" style="color: #10b981; font-size: 13px; display: none; text-align: center; margin-top: 10px; font-weight: 600;">Saved Successfully!</p>
+        <div id="status" class="sj-status"></div>
     </div>
 
+    <!-- New Prompt Card -->
     <div class="card">
         <h4>⚡ New Floating Prompt</h4>
-        <input type="text" id="promptTitle" placeholder="Button Name (e.g. Extract Info)">
+        <input type="text" id="promptTitle" placeholder="Button Name (e.g., Extract Info)">
         <textarea id="promptText" rows="3" placeholder="Full instruction for the AI..."></textarea>
         <button id="addPromptBtn" class="primary">Add Quick Prompt</button>
     </div>
 
+    <!-- Active Prompts Card -->
     <div class="card">
         <h4>📂 Active Prompts</h4>
-        <p class="desc">Click 📌 to pin a prompt.</p>
+        <p class="desc">📌 = Pin | ✏️ = Edit | 🗑️ = Delete</p>
         <div id="promptList"></div>
     </div>
 
